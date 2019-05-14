@@ -1,5 +1,3 @@
-## 返璞归真
-
 popupBox是一款web弹层组件，该组件有pc版本和wap版本。pc版本兼容了包括IE6在内的所有主流浏览器。
 pc版本和wap版本都依赖第三方库，jquery.js、zepto.js。
 
