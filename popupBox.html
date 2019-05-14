@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/popupBox.css"/>
+    <style>
+        .btn01{
+            margin: 20px;
+            display: inline-block;
+            height: 34px;
+            line-height: 32px;
+            text-align: center;
+            padding: 0 16px;
+            color: #333;
+            font-size: 12px;
+            background: #ccc;
+            border: 1px solid #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <a href="javascript:void(0);" class="btn01 loading-box">loading层</a>
+</div>
+
+<div>
+    <a href="javascript:void(0);" class="btn01 tips-box">提示层</a>
+</div>
+
+<div>
+    <a href="javascript:void(0);" class="btn01 page-box">content为字符串的页面层</a>
+</div>
+
+<div>
+    <a href="javascript:void(0);" class="btn01 page-box02">content为dom的页面层</a>
+</div>
+
+<div class="dom-box" style="display: none;">dom</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/popupBox.js"></script>
+<script>
+    $(function () {
+
+        /**
+         * loading层
+         * popupBox.load(options);
+         * 默认参数：
+         * type: 1,
+         * className: 'customLayer-load',
+         * shadeClassName: 'customLayer-loadShade',
+         * shade: true,
+         * shadeClose: false,
+         * closeBtn: false,
+         * title: false,
+         * content: '<div class="loading"></div>',
+         * btn: [],
+         * time: 3000
+         * **/
+        $('.loading-box').on('click', function () {
+
+            var loadingPop= popupBox.load();
+
+        })
+
+        /**
+         * 提示层
+         * popupBox.msg(content, options);
+         * 默认参数：
+         * type: 1,
+         * className: 'customLayer-msg',
+         * shadeClassName: 'customLayer-msgShade',
+         * shade: false,
+         * shadeClose: false,
+         * closeBtn: false,
+         * title: false,
+         * content: '<div class="png"></div><div class="pngCon">'+ content +'</div>',
+         * btn: [],
+         * time: 3000
+         * **/
+        $('.tips-box').on('click', function () {
+
+            var msgPop= popupBox.msg('阿斯达大街', {
+                shade: true
+            });
+
+        })
+
+        /**
+         * 页面层
+         * popupBox.open(options);
+         * 默认参数：
+         * type: 0,  //0为信息框，1为tips层、loading层
+         * className: '',
+         * shadeClassName: '',
+         * shade: true,
+         * shadeClose: true,
+         * closeBtn: true,
+         * fixed: true,
+         * area: ['auto', 'auto'],
+         * title: '信息',  //title值为false，则不显示标题
+         * content: '',  //支持字符串、dom对象，例如$('.test')
+         * btn: [],
+         * time: 0
+         * **/
+        $('.page-box').on('click', function () {
+
+            var pagePop = popupBox.open({
+                //title: false,
+                area: ['600px', 'auto'],
+                content: '123',
+                btn: ['是的', '取消'],
+                success: function (index, layero) {
+                    console.log('pagePop已打开')
+                },
+                end: function () {
+                    console.log('pagePop已销毁')
+                },
+                yes: function (index, layero) {
+                    console.log('确认按钮触发回调')
+                    //return false;  //如果不想关闭，return false即可
+                },
+                cancel: function (index, layero) {
+                    console.log('关闭按钮触发回调')
+                    //return false;  //如果不想关闭，return false即可
+                }
+            });
+
+        })
+        $('.page-box02').on('click', function () {
+
+            var page02Pop= popupBox.open({
+                area: ['600', 'auto'],
+                content: $('.dom-box'),
+                btn: ['是的', '取消'],
+                success: function (index, layero) {
+                    console.log('page02Pop已打开')
+                },
+                end: function () {
+                    console.log('page02Pop已销毁')
+                },
+                yes: function (index, layero) {
+                    console.log('确认按钮触发回调')
+                    //return false;  //如果不想关闭，return false即可
+                },
+                cancel: function (index, layero) {
+                    console.log('关闭按钮触发回调')
+                    //return false;  //如果不想关闭，return false即可
+                }
+            });
+
+            setTimeout(function () {
+                popupBox.close(page02Pop)
+            }, 3000)
+
+        })
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/** customPopping **/
+.customLayer{
+	position: fixed;
+	z-index: 102;
+	top: 0;
+	left: 0;
+	background: #fff;
+}
+.customLayer-shade{
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: auto;
+	background-color: #000;
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+.customLayer-main{
+	position: absolute;
+	z-index: 4;
+	top: 0;
+	left: 0;
+	background: #fff;
+	border: 1px solid #eee;
+}
+.customLayer-content{
+	position: relative;
+	z-index: 0;
+    overflow: auto;
+}
+.customLayer-title{
+	padding: 0 80px 0 20px;
+	height: 42px;
+	line-height: 42px;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+	color: #333;
+	overflow: hidden;
+	background-color: #F8F8F8;
+}
+.customLayer-setwin{
+	position: absolute;
+	z-index: 4;
+	right: 15px;
+	top: 15px;
+}
+.customLayer-setwin .customLayer-close{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	background: url('../img/close.png') 0 0 no-repeat;
+}
+.customLayer-setwin .customLayer-close:hover{
+	background: url('../img/close.png') 0 -14px no-repeat;
+}
+.customLayer-btn{
+	padding: 0 15px 12px;
+	text-align: right;
+}
+.customLayer-btn a{
+	margin: 5px 5px 0;
+	display: inline-block;
+	height: 28px;
+	line-height: 26px;
+	padding: 0 15px;
+	background-color: #fff;
+	color: #333;
+	font-size: 12px;
+	border-radius: 2px;
+	font-weight: 400;
+	cursor: pointer;
+	text-decoration: none;
+	border: 1px solid #dedede;
+}
+.customLayer-btn .customLayer-btn0{
+	color: #fff;
+	background-color: #1E9FFF;
+	border-color: #1E9FFF;
+}
+.customLayer-noTitle .customLayer-setwin{
+	top: 0;
+	right: -25px;
+}
+.customLayer-msg, .customLayer-load{
+	background: none;
+	border: 0;
+}
+.customLayer-msg .png{
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+	border-radius: 3px;
+}
+.customLayer-msg .pngCon{
+	position: relative;
+	z-index: 4;
+}
+.customLayer-msg .customLayer-content{
+	padding: 12px 25px;
+	color: #fff;
+}
+.customLayer-msgShade, .customLayer-loadShade{
+	background: none;
+}
+.customLayer-load .customLayer-content{
+	line-height: 1;
+	font-size: 0;
+}
+.customLayer-load .loading{
+	display: inline-block;
+	width: 37px;
+	height: 37px;
+	background: url('../img/loading.gif') 0 0 no-repeat;
+}
+.customLayer.customLayer-anim-scale{
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-duration: .3s;
+	animation-duration: .3s;
+	animation-name: customLayer-bounceIn;
+	-webkit-animation-name: customLayer-bounceIn;
+}
+@-webkit-keyframes customLayer-bounceIn{
+	0%{
+		opacity: 0;
+		-webkit-transform: scale(.5);
+		transform: scale(.5)
+	}
+	100%{
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1)
+	}
+}
+@keyframes customLayer-bounceIn{
+	0%{
+		opacity: 0;
+		-webkit-transform: scale(.5);
+		-ms-transform: scale(.5);
+		transform: scale(.5)
+	}
+	100%{
+		opacity: 1;
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1)
+	}
+}
